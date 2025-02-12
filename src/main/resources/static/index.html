@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>User Registration</title>
+</head>
+<body>
+<div id="login-form">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username" required>
+    <input type="password" id="login-password" placeholder="Password" required>
+    <button id="login-button">Login</button>
+    <p id="login-error" style="display: none; color: red;">Invalid credentials. Try again.</p>
+    <button id="switch-to-register">Don't have an account? Register</button>
+</div>
+
+<div id="register-form" style="display: none;">
+    <h2>Register</h2>
+    <input type="text" id="register-username" placeholder="Username" required>
+    <input type="password" id="register-password" placeholder="Password" required>
+    <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+    <button id="register-button">Register</button>
+    <p id="register-error" style="display: none; color: red;">Error: Passwords must match or username is taken</p>
+    <button id="switch-to-login">Already have an account? Login</button>
+</div>
+
+<script src="./scripts.js"></script>
+</body>
+</html>
