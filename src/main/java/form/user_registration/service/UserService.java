@@ -1,9 +1,11 @@
 package form.user_registration.service;
 
+import form.user_registration.model.LoginRequest;
 import form.user_registration.model.RegistrationRequest;
 import form.user_registration.model.User;
 import form.user_registration.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -31,5 +33,19 @@ public class UserService {
         user.setPassword(hashedPassword);
         userRepository.save(user);
         return ResponseEntity.ok("User registered successfully!");
+    }
+
+    public ResponseEntity<?> login(LoginRequest request) {
+        if (userRepository.findUserByUsername(request.getUsername()).isEmpty()) {
+            return ResponseEntity.badRequest().body("Username does not exist!");
+        }
+
+        User user = userRepository.findUserByUsername(request.getUsername()).get();
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password!");
+        }
+
+        return ResponseEntity.ok("Logged in successfully!");
     }
 }

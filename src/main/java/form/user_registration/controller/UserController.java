@@ -1,5 +1,6 @@
 package form.user_registration.controller;
 
+import form.user_registration.model.LoginRequest;
 import form.user_registration.model.RegistrationRequest;
 import form.user_registration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,10 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegistrationRequest request) {
         return userService.register(request);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest request) {
+        return userService.login(request);
     }
 }
