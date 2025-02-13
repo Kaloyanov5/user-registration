@@ -1,4 +1,4 @@
-# Registration-Login-App
+# User Registration
 A Spring Boot application that allows users to register and log in using Spring Security for authentication and BCrypt for secure password hashing.
 
 ## Features
