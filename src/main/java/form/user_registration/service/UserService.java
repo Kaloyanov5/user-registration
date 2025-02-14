@@ -4,7 +4,6 @@ import form.user_registration.model.LoginRequest;
 import form.user_registration.model.RegistrationRequest;
 import form.user_registration.model.User;
 import form.user_registration.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,8 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
