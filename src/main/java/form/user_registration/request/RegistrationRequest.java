@@ -1,4 +1,4 @@
-package form.user_registration.model;
+package form.user_registration.request;
 
 public class RegistrationRequest {
     private String username;
