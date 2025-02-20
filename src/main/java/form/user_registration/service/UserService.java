@@ -1,7 +1,7 @@
 package form.user_registration.service;
 
-import form.user_registration.model.LoginRequest;
-import form.user_registration.model.RegistrationRequest;
+import form.user_registration.request.LoginRequest;
+import form.user_registration.request.RegistrationRequest;
 import form.user_registration.model.User;
 import form.user_registration.repository.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -39,7 +39,7 @@ public class UserService {
 
     public ResponseEntity<?> login(LoginRequest request) {
         if (userRepository.findUserByUsername(request.getUsername()).isEmpty()) {
-            return ResponseEntity.badRequest().body("Username does not exist!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Username does not exist!");
         }
 
         User user = userRepository.findUserByUsername(request.getUsername()).get();
@@ -48,6 +48,6 @@ public class UserService {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password!");
         }
 
-        return ResponseEntity.ok("Logged in successfully!");
+        return ResponseEntity.ok(user.getId());
     }
 }

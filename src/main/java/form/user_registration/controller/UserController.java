@@ -1,7 +1,7 @@
 package form.user_registration.controller;
 
-import form.user_registration.model.LoginRequest;
-import form.user_registration.model.RegistrationRequest;
+import form.user_registration.request.LoginRequest;
+import form.user_registration.request.RegistrationRequest;
 import form.user_registration.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
